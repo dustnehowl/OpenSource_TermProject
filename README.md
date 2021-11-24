@@ -1,1 +1,1 @@
-# OpenSource_TermProject
+# 김동경 바보멍청이
