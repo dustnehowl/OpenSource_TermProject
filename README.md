@@ -1,5 +1,5 @@
 # Open-Source Term Project
 
-김동경 김연수
-{: .text-right }
+참고한곳 :   
+https://github.com/spmallick/learnopencv
 
