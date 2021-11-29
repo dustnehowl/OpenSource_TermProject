@@ -88,7 +88,7 @@ rps_gesture = {6:'rock', 5:'paper', 9:'scissors'}
 ![image](https://user-images.githubusercontent.com/39877181/143799128-e48c3edd-4922-4486-8d42-1433de4ff7e0.png)
 ![image](https://user-images.githubusercontent.com/39877181/143799160-65246cd8-0e8f-417d-9f11-9ebe7151e858.png)
 
-코드 추가 (추후에 캠슐화 해야함)
+코드 추가 (추후에 캡슐화 해야함)
 
 #### 다른 보드 생성 ( 에임보드)
 ```
