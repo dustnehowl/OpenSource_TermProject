@@ -132,7 +132,7 @@ if idx in aim_color.keys():
 rps_gesture = {6:'rock', 5:'paper', 9:'scissors', 1:'scissors', 0: 'rock', 3:'scissors'}
 ```
 
-###20211129
+### 20211129
 
 #### 에임 그림 추가
 ```
@@ -146,4 +146,43 @@ if idx in aim_color.keys():
                         (px, py - 20), 2)
                 pygame.draw.line(windowSurface, BLACK, (px + 20, py),
                         (px - 20, py), 2) 
+```
+
+### 20211130
+
+#### 타겟 gif처럼 보이게 설정
+
+##### 전역 변수 추가
+```
+frameNum = 0
+TARGET_SIZE = 80
+```
+
+##### 프레임별로 추가
+```
+while total_target < 2:        
+        targets.append((random.randrange(0,WINDOW_SIZE_WIDTH-TARGET_SIZE), random.randrange(0,WINDOW_SIZE_HEIGHT-TARGET_SIZE)))
+        total_target += 1
+
+    if frameNum < 24 :
+        frameNum = frameNum+1
+    else:
+        frameNum = 0
+
+    if frameNum < 4:
+        targetImage = pygame.image.load("0.png")
+    elif frameNum < 8:
+        targetImage = pygame.image.load("1.png")
+    elif frameNum < 12:
+        targetImage = pygame.image.load("2.png")
+    elif frameNum < 16:
+        targetImage = pygame.image.load("3.png")
+    elif frameNum < 20:
+        targetImage = pygame.image.load("4.png")
+    elif frameNum < 24:
+        targetImage = pygame.image.load("5.png")
+
+    for target in targets: 
+        targetImage = pygame.transform.scale(targetImage, (TARGET_SIZE,TARGET_SIZE))
+        windowSurface.blit(targetImage, target)
 ```
