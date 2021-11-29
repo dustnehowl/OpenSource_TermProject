@@ -131,3 +131,19 @@ if idx in aim_color.keys():
 ```
 rps_gesture = {6:'rock', 5:'paper', 9:'scissors', 1:'scissors', 0: 'rock', 3:'scissors'}
 ```
+
+###20211129
+
+#### 에임 그림 추가
+```
+if idx in aim_color.keys():
+                pygame.draw.circle(windowSurface, aim_color[idx], jointpos,5)
+
+                pygame.draw.circle(windowSurface, BLACK, (px,py),
+                           20, 2)
+
+                pygame.draw.line(windowSurface, BLACK, (px, py + 20),
+                        (px, py - 20), 2)
+                pygame.draw.line(windowSurface, BLACK, (px + 20, py),
+                        (px - 20, py), 2) 
+```
