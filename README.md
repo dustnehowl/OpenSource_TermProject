@@ -186,3 +186,79 @@ while total_target < 2:
         targetImage = pygame.transform.scale(targetImage, (TARGET_SIZE,TARGET_SIZE))
         windowSurface.blit(targetImage, target)
 ```
+
+#### 게임시작전 메뉴 화면
+```
+def menuSetup():
+
+    windowSurface.fill(WHITE)
+    difficultyRects = []
+    difficultyRects.append(pygame.Rect(50, 180, 100, 50)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
+    difficultyRects.append(pygame.Rect(200, 180, 100, 50))
+    difficultyRects.append(pygame.Rect(350, 180, 100, 50))
+    for rect in difficultyRects:
+        pygame.draw.rect(windowSurface, GREEN, rect)
+    drawText("Easy", windowSurface, 75, 195, FONT2 , BLACK)
+    drawText("Medium", windowSurface, 210, 195,FONT2 , BLACK)
+    drawText("Hard", windowSurface, 375, 195 ,FONT2 , BLACK)
+    global START_GAME
+    if bang() == True:
+        if difficultyRects[0].collidepoint(jointpos):
+            START_GAME = 1
+        if difficultyRects[1].collidepoint(jointpos):
+            START_GAME = 2
+        if difficultyRects[2].collidepoint(jointpos):
+            START_GAME = 3
+
+def Menu():
+    menuSetup()
+```
+
+#### 총쏘는거 감지하는 bang 함수
+```
+def bang():
+    global buffer
+    if (buffer == 9 or buffer == 1 or buffer == 3) and (idx == 6 or idx == 0):
+        return True
+    else:
+        buffer = idx
+        return False
+```
+
+#### 메뉴화면 만듦에 따라 타켓 코드 수정 + 뒤로가기 버튼
+```
+if START_GAME > 0:
+        windowSurface.blit(backImage, [465, 465]) # 뒤로가기 버튼
+        makeTarget(GAME_MODE[START_GAME])
+        if total_target == 0:
+            while total_target < START_GAME * 2:       # 난이도에 따라 target 생성 수 변화 
+                #targets.append((random.randrange(0,WINDOW_SIZE_WIDTH-TARGET_SIZE)
+                #, random.randrange(0,WINDOW_SIZE_HEIGHT-TARGET_SIZE)))
+                targets.append(pygame.Rect(random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),
+                random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),TARGET_SIZE,TARGET_SIZE))
+                total_target = total_target + 1
+
+        backRect = pygame.Rect(465, 465, BACK_SIZE, BACK_SIZE)
+
+        if bang() == True:
+            if backRect.collidepoint(jointpos):
+                targets.clear()
+                total_target = 0
+                START_GAME = 0
+            for target in targets:
+                if target.collidepoint(jointpos):
+                    targets.remove(target)
+                    total_target = total_target - 1
+
+        frameNum = drawTarget(frameNum)
+    
+    else:
+        #게임 시작이 아니면 메뉴 화면 만들어야함
+        Menu()
+```
+
+#### 211130 결과
+
+
+https://user-images.githubusercontent.com/39877181/144035644-32c8fd6f-f8f3-497b-bc71-118e114a1ac4.mp4
+
