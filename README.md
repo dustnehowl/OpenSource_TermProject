@@ -262,3 +262,14 @@ if START_GAME > 0:
 
 https://user-images.githubusercontent.com/39877181/144035644-32c8fd6f-f8f3-497b-bc71-118e114a1ac4.mp4
 
+
+#### 211203 점수 추가
+![image](https://user-images.githubusercontent.com/39877181/144635887-ea811a5d-a2aa-4cc6-b27f-ddfd61204a53.png)
+
+```
+        drawText("SCORE : ", windowSurface, 10,10, FONT2 , BLACK)
+        drawText(str(score), windowSurface, 100,10, FONT2 , BLACK)
+```
+
+
+
