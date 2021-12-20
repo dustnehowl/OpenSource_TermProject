@@ -128,7 +128,7 @@ def game(difficulty):
     hitShots = 0
     totalShots = 0
     STARTINGTIME = config.get("time")
-    CIRCLERADIUS = 50
+    CIRCLERADIUS = 150
     while True:
         if(config.get("time") <= 0):
             gameOver(totalShots, hitShots, difficulty, score)
@@ -178,10 +178,10 @@ def game(difficulty):
             windowSurface.blit(targetImage, enemy)
         pygame.draw.circle(windowSurface, BLACK, (mouseX,mouseY),
                            CIRCLERADIUS + 1, 3)
-        pygame.draw.line(windowSurface, BLACK, (mouseX, mouseY + 50),
-                        (mouseX, mouseY - 50), 2)
-        pygame.draw.line(windowSurface, BLACK, (mouseX + 50, mouseY),
-                        (mouseX - 50, mouseY), 2)
+        pygame.draw.line(windowSurface, BLACK, (mouseX, mouseY + 150),
+                        (mouseX, mouseY - 150), 2)
+        pygame.draw.line(windowSurface, BLACK, (mouseX + 150, mouseY),
+                        (mouseX - 150, mouseY), 2)
         drawText("Time: " + str(config.get("time")), windowSurface, 8,8)
         drawText("Score: " + str(score), windowSurface, 8,38)
         pygame.display.update()

@@ -1,13 +1,15 @@
 import pygame
-import math  
+import math  # for checking for collisions with the mouse and the circle
 import random
 
+# Define the screen the screen and initialize pygame
 pygame.init()
 
 width = 1600
 height = 900
 display = pygame.display.set_mode((width, height))
 
+# Colors
 black = (0, 0, 0)
 white = (255, 255, 255)
 purple = (128, 0, 128)
@@ -21,6 +23,7 @@ green = (0, 200, 0)
 light_green = (0, 255, 0)
 colors = [white, grey, purple, sky, blue, orange, red, light_red, green, light_green]
 
+# Globals
 clock = pygame.time.Clock()  # To set the frame rate
 
 
@@ -28,6 +31,7 @@ cx = random.randint(20, width - 20)
 cy = random.randint(20, height - 20)
 width_of_circle = random.randint(14, 20)
 pygame.draw.circle(display, random.choice(colors), (cx, cy), width_of_circle)
+# Main loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
