@@ -2,6 +2,12 @@
 
 참고한곳 :   
 https://github.com/spmallick/learnopencv
+https://github.com/wolfstriker134/Aim-Trainer
+https://github.com/pzet123/aim-Trainer
+
+이미지 사용 :
+https://appadvice.com/app/eagle-hunter-sniper-shooter-pro/1130203018
+https://www.pinterest.co.kr/mxsxixbx/%ED%95%98%EB%8A%98-%EA%B7%B8%EB%A6%BC/
 
 ### 20211125
 ----------------------

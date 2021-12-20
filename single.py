@@ -9,17 +9,22 @@ from pygame.locals import *
 #########################################################################
 pygame.init()
 
+score = 0
+
 POINTER_SIZE = 20
-pointerImage = pygame.image.load("pointer.png")
+pointerImage = pygame.image.load("images/pointer.png")
 pointerImage = pygame.transform.scale(pointerImage, (POINTER_SIZE,POINTER_SIZE))
 
 BACK_SIZE = 35
-backImage = pygame.image.load("back.png")
+backImage = pygame.image.load("images/back.png")
 backImage = pygame.transform.scale(backImage, (BACK_SIZE,BACK_SIZE))
+
+bg = pygame.image.load("images/background.png")
+bg_game = pygame.image.load("images/game_back.png")
 
 GAME_MODE = {1: 'easy', 2:'normal', 3:'hard'} # 게임 난이도 고를 수 있도록
 START_GAME = 0
-
+MODE = 0
 total_target = 0
 targets = []
 
@@ -41,8 +46,11 @@ GREEN = (0,255,0)
 
 aim_color = {6 : BLUE, 5 : GREEN, 9 : RED, 1: RED, 0 : BLUE, 3 : RED}
 
-FONT = pygame.font.SysFont(None, 48)
-FONT2 = pygame.font.SysFont(None, 30)
+FONT = pygame.font.Font('font/Maplestory Bold.ttf', 40)
+UIFONT = pygame.font.Font('font/Maplestory Bold.ttf', 25)
+UIFONT2 = pygame.font.Font('font/Maplestory Bold.ttf', 28)
+DIFFIFONT = pygame.font.Font('font/Maplestory Bold.ttf', 32)
+DIFFIFONT2 = pygame.font.Font('font/Maplestory Bold.ttf', 35)
 
 windowSurface = pygame.display.set_mode((WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
 pygame.display.set_caption("Hand_Aim")
@@ -60,17 +68,17 @@ def drawText(text, surface, x, y, font = FONT, color = RED):
 def drawTarget(fN):
 
     if fN < 4:
-        targetImage = pygame.image.load("0.png")
+        targetImage = pygame.image.load("images/0.png")
     elif fN < 8:
-        targetImage = pygame.image.load("1.png")
+        targetImage = pygame.image.load("images/1.png")
     elif fN < 12:
-        targetImage = pygame.image.load("2.png")
+        targetImage = pygame.image.load("images/2.png")
     elif fN < 16:
-        targetImage = pygame.image.load("3.png")
+        targetImage = pygame.image.load("images/3.png")
     elif fN < 20:
-        targetImage = pygame.image.load("4.png")
+        targetImage = pygame.image.load("images/4.png")
     elif fN < 24:
-        targetImage = pygame.image.load("5.png")
+        targetImage = pygame.image.load("images/5.png")
 
     for target in targets: 
         targetImage = pygame.transform.scale(targetImage, (TARGET_SIZE,TARGET_SIZE))
@@ -87,32 +95,73 @@ def makeTarget(difficulty):
     else:
         TARGET_SIZE = 50
 
-def menuSetup():
-
-    windowSurface.fill(WHITE)
-    difficultyRects = []
-    difficultyRects.append(pygame.Rect(50, 180, 100, 50)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
-    difficultyRects.append(pygame.Rect(200, 180, 100, 50))
-    difficultyRects.append(pygame.Rect(350, 180, 100, 50))
-    for rect in difficultyRects:
-        pygame.draw.rect(windowSurface, GREEN, rect)
-    drawText("Easy", windowSurface, 75, 195, FONT2 , BLACK)
-    drawText("Medium", windowSurface, 210, 195,FONT2 , BLACK)
-    drawText("Hard", windowSurface, 375, 195 ,FONT2 , BLACK)
-    global START_GAME
-    if bang() == True:
-        if difficultyRects[0].collidepoint(jointpos):
-            START_GAME = 1
-        if difficultyRects[1].collidepoint(jointpos):
-            START_GAME = 2
-        if difficultyRects[2].collidepoint(jointpos):
-            START_GAME = 3
-
 def Menu():
-    menuSetup()
+    windowSurface.fill(WHITE)
+    global MODE
+    bg_trans = pygame.transform.scale(bg, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
+    bg_trans.set_alpha(100)
+    windowSurface.blit(bg_trans, [0,0])
+    if MODE == 0:
+        menuUI = []
+        menuUI.append(pygame.Rect(320,300,100,40))
+        menuUI.append(pygame.Rect(320,350,100,40))
+        menuUI.append(pygame.Rect(320,400,100,40))
+
+        # for rect in menuUI: #굳이 그릴필요 없음
+        #     pygame.draw.rect(windowSurface, WHITE, rect)
+
+        drawText("Eagle Hunt", windowSurface, 150, 130, FONT , BLACK) # 게임 이름
+
+        uiname = ["Start!", "Creator", "Exit"]
+        ui_y = [310,360,410]
+        for idx in range(0,3):
+            if menuUI[idx].collidepoint(jointpos):
+                drawText(uiname[idx], windowSurface, 360,  ui_y[idx]-3, UIFONT2 , BLACK)
+                if bang() == True:
+                    MODE = idx+1
+                    print(MODE)
+            else:
+                drawText(uiname[idx], windowSurface, 360, ui_y[idx], UIFONT , BLACK)
+    if MODE == 1:
+        SetDiffi()
+    elif MODE == 2:
+        Creator()
+    elif MODE == 3:
+        sys.exit()
+
+def Make_back():
+    backRect = pygame.Rect(0, 465, BACK_SIZE, BACK_SIZE)
+    windowSurface.blit(backImage, [0, 465])
+    global MODE
+    if bang() == True:
+        if backRect.collidepoint(jointpos):
+            MODE = 0
+
+def Creator(): # 
+    drawText("18101191 김동경", windowSurface, 100,100, FONT,BLACK)
+    drawText("18101201 김연수", windowSurface, 100,150, FONT,BLACK)
+    Make_back()
+
+def SetDiffi():
+    difficultyRects = []
+    difficultyRects.append(pygame.Rect(205, 95, 100, 40)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
+    difficultyRects.append(pygame.Rect(205, 205, 110, 40))
+    difficultyRects.append(pygame.Rect(205, 330, 100, 40))
+    # for rect in difficultyRects:
+    #     pygame.draw.rect(windowSurface, GREEN, rect)
+    global START_GAME
+    diffi_y = [95,210,335] # 난이도에 에임올려져 있을 시 강조 효과 추가
+    for idx in range(1,4):
+        if difficultyRects[idx-1].collidepoint(jointpos):
+            drawText(GAME_MODE[idx], windowSurface, 210, diffi_y[idx-1]-3, DIFFIFONT2 , BLACK)
+            if bang() == True:
+                START_GAME = idx
+        else:
+            drawText(GAME_MODE[idx], windowSurface, 210, diffi_y[idx-1], DIFFIFONT , BLACK)
+
+    Make_back()
 
 buffer = 0
-
 # 총쏘는 걸 감지하는 bang함수
 def bang():
     global buffer
@@ -121,6 +170,47 @@ def bang():
     else:
         buffer = idx
         return False
+
+
+def game(): #211130 수정
+    
+    bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
+    bg_trans.set_alpha(100)
+    windowSurface.blit(bg_trans, [0,0])
+
+    global START_GAME,total_target,score,frameNum
+    if START_GAME > 0:
+        windowSurface.blit(backImage, [465, 465])
+        makeTarget(GAME_MODE[START_GAME])
+        if total_target == 0:
+            while total_target < START_GAME * 2:        
+                #targets.append((random.randrange(0,WINDOW_SIZE_WIDTH-TARGET_SIZE)
+                #, random.randrange(0,WINDOW_SIZE_HEIGHT-TARGET_SIZE)))
+                targets.append(pygame.Rect(random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),
+                random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),TARGET_SIZE,TARGET_SIZE))
+                total_target = total_target + 1
+
+        backRect = pygame.Rect(465, 465, BACK_SIZE, BACK_SIZE)
+        drawText("SCORE : ", windowSurface, 10,10, UIFONT , BLACK)
+        drawText(str(score), windowSurface, 120,10, UIFONT , BLACK)
+
+        if bang() == True:
+            if backRect.collidepoint(jointpos):
+                targets.clear()
+                total_target = 0
+                score = 0
+                START_GAME = 0
+            for target in targets:
+                if target.collidepoint(jointpos):
+                    targets.remove(target)
+                    score = score + START_GAME
+                    total_target = total_target - 1
+
+        frameNum = drawTarget(frameNum)
+    
+    else:
+        #게임 시작이 아니면 메뉴 화면
+        Menu()
 
 
 max_num_hands = 1
@@ -167,39 +257,7 @@ while cap.isOpened():
 
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
-#####################################target######################################  #211130 수정
-    
-    if START_GAME > 0:
-        windowSurface.blit(backImage, [465, 465])
-        makeTarget(GAME_MODE[START_GAME])
-        if total_target == 0:
-            while total_target < START_GAME * 2:        
-                #targets.append((random.randrange(0,WINDOW_SIZE_WIDTH-TARGET_SIZE)
-                #, random.randrange(0,WINDOW_SIZE_HEIGHT-TARGET_SIZE)))
-                targets.append(pygame.Rect(random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),
-                random.randrange(0,WINDOW_SIZE_WIDTH - TARGET_SIZE),TARGET_SIZE,TARGET_SIZE))
-                total_target = total_target + 1
-
-        backRect = pygame.Rect(465, 465, BACK_SIZE, BACK_SIZE)
-
-        if bang() == True:
-            if backRect.collidepoint(jointpos):
-                targets.clear()
-                total_target = 0
-                START_GAME = 0
-            for target in targets:
-                if target.collidepoint(jointpos):
-                    targets.remove(target)
-                    total_target = total_target - 1
-
-        frameNum = drawTarget(frameNum)
-    
-    else:
-        #게임 시작이 아니면 메뉴 화면 만들어야함
-        Menu()
-
-#################################################################################
-
+    game()
 
     if result.multi_hand_landmarks is not None:
         for res in result.multi_hand_landmarks:
@@ -234,8 +292,8 @@ while cap.isOpened():
             # drawText(str(idx), windowSurface, 230, 230, FONT , BLACK)
 
             #############create aim############### #211126
-            px = joint[14][0] * (WINDOW_SIZE_WIDTH + 100) + 0
-            py = joint[14][1] * (WINDOW_SIZE_HEIGHT + 100) + 0
+            px = joint[14][0] * (WINDOW_SIZE_WIDTH) + 0
+            py = joint[14][1] * (WINDOW_SIZE_HEIGHT) + 0
             jointpos = [px,py]
             if START_GAME > 0:
                 if idx in aim_color.keys():
@@ -257,7 +315,7 @@ while cap.isOpened():
 
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)
 
-    #cv2.imshow('Game', img)
+    cv2.imshow('Game', img)
 
 
     pygame.display.update()
@@ -270,5 +328,3 @@ while cap.isOpened():
 
     if cv2.waitKey(1) == ord('q'):
         break
-
-
