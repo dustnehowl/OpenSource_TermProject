@@ -6,8 +6,34 @@ https://github.com/wolfstriker134/Aim-Trainer
 https://github.com/pzet123/aim-Trainer
 
 이미지 사용 :
-https://appadvice.com/app/eagle-hunter-sniper-shooter-pro/1130203018
-https://www.pinterest.co.kr/mxsxixbx/%ED%95%98%EB%8A%98-%EA%B7%B8%EB%A6%BC/
+[background](https://appadvice.com/app/eagle-hunter-sniper-shooter-pro/1130203018)
+[game_back](https://www.pinterest.co.kr/mxsxixbx/%ED%95%98%EB%8A%98-%EA%B7%B8%EB%A6%BC/)
+
+###20211130
+----------------------
+
+Target 움직이는 것처럼 보이게 구현
+
+def drawTarget(fN):
+
+    if fN < 4:
+        targetImage = pygame.image.load("images/0.png")
+    elif fN < 8:
+        targetImage = pygame.image.load("images/1.png")
+    elif fN < 12:
+        targetImage = pygame.image.load("images/2.png")
+    elif fN < 16:
+        targetImage = pygame.image.load("images/3.png")
+    elif fN < 20:
+        targetImage = pygame.image.load("images/4.png")
+    elif fN < 24:
+        targetImage = pygame.image.load("images/5.png")
+
+    for target in targets: 
+        targetImage = pygame.transform.scale(targetImage, (TARGET_SIZE,TARGET_SIZE))
+        windowSurface.blit(targetImage, target)
+
+    return (fN + 1) % 24
 
 ### 20211125
 ----------------------
