@@ -10,6 +10,7 @@ from pygame.locals import *
 pygame.init()
 
 score = 0
+finalScore = 0
 
 POINTER_SIZE = 20
 pointerImage = pygame.image.load("images/pointer.png")
@@ -22,7 +23,7 @@ backImage = pygame.transform.scale(backImage, (BACK_SIZE,BACK_SIZE))
 bg = pygame.image.load("images/background.png")
 bg_game = pygame.image.load("images/game_back.png")
 
-GAME_MODE = {1: 'easy', 2:'normal', 3:'hard'} # 게임 난이도 고를 수 있도록
+GAME_MODE = {1: ' Easy', 2:'Normal', 3:' Hard', 4: 'ScoreBoard'} # 게임 난이도 고를 수 있도록
 START_GAME = 0
 MODE = 0
 total_target = 0
@@ -88,9 +89,9 @@ def drawTarget(fN):
 
 def makeTarget(difficulty):
     global TARGET_SIZE
-    if difficulty == 'easy':
+    if difficulty == 'Easy':
         TARGET_SIZE = 90
-    elif difficulty == 'normal':
+    elif difficulty == 'Normal':
         TARGET_SIZE = 70
     else:
         TARGET_SIZE = 50
@@ -116,7 +117,7 @@ def Menu():
         ui_y = [310,360,410]
         for idx in range(0,3):
             if menuUI[idx].collidepoint(jointpos):
-                drawText(uiname[idx], windowSurface, 360,  ui_y[idx]-3, UIFONT2 , BLACK)
+                drawText(uiname[idx], windowSurface, 357,  ui_y[idx]-3, UIFONT2 , BLACK)
                 if bang() == True:
                     MODE = idx+1
                     print(MODE)
@@ -138,26 +139,26 @@ def Make_back():
             MODE = 0
 
 def Creator(): # 
-    drawText("18101191 김동경", windowSurface, 100,100, FONT,BLACK)
+    drawText("18101192 김동경", windowSurface, 100,100, FONT,BLACK)
     drawText("18101201 김연수", windowSurface, 100,150, FONT,BLACK)
     Make_back()
 
 def SetDiffi():
     difficultyRects = []
-    difficultyRects.append(pygame.Rect(205, 95, 100, 40)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
-    difficultyRects.append(pygame.Rect(205, 205, 110, 40))
-    difficultyRects.append(pygame.Rect(205, 330, 100, 40))
+    difficultyRects.append(pygame.Rect(195, 95, 100, 40)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
+    difficultyRects.append(pygame.Rect(195, 205, 120, 40))
+    difficultyRects.append(pygame.Rect(195, 330, 100, 40))
     # for rect in difficultyRects:
-    #     pygame.draw.rect(windowSurface, GREEN, rect)
+    #    pygame.draw.rect(windowSurface, GREEN, rect)
     global START_GAME
     diffi_y = [95,210,335] # 난이도에 에임올려져 있을 시 강조 효과 추가
     for idx in range(1,4):
         if difficultyRects[idx-1].collidepoint(jointpos):
-            drawText(GAME_MODE[idx], windowSurface, 210, diffi_y[idx-1]-3, DIFFIFONT2 , BLACK)
+            drawText(GAME_MODE[idx], windowSurface, 197, diffi_y[idx-1]-3, DIFFIFONT2 , BLACK)
             if bang() == True:
                 START_GAME = idx
         else:
-            drawText(GAME_MODE[idx], windowSurface, 210, diffi_y[idx-1], DIFFIFONT , BLACK)
+            drawText(GAME_MODE[idx], windowSurface, 200, diffi_y[idx-1], DIFFIFONT , BLACK)
 
     Make_back()
 
@@ -179,7 +180,9 @@ def game(): #211130 수정
     windowSurface.blit(bg_trans, [0,0])
 
     global START_GAME,total_target,score,frameNum
-    if START_GAME > 0:
+    if START_GAME == 4:
+        ScoreBoard()
+    elif START_GAME > 0:
         windowSurface.blit(backImage, [465, 465])
         makeTarget(GAME_MODE[START_GAME])
         if total_target == 0:
@@ -194,12 +197,15 @@ def game(): #211130 수정
         drawText("SCORE : ", windowSurface, 10,10, UIFONT , BLACK)
         drawText(str(score), windowSurface, 120,10, UIFONT , BLACK)
 
+
         if bang() == True:
             if backRect.collidepoint(jointpos):
+                global finalScore
+                finalScore = score
                 targets.clear()
                 total_target = 0
                 score = 0
-                START_GAME = 0
+                START_GAME = 4
             for target in targets:
                 if target.collidepoint(jointpos):
                     targets.remove(target)
@@ -212,6 +218,21 @@ def game(): #211130 수정
         #게임 시작이 아니면 메뉴 화면
         Menu()
 
+def ScoreBoard () :
+    bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
+    bg_trans.set_alpha(100)
+    windowSurface.blit(bg_trans, [0,0])
+    drawText("SCORE : ", windowSurface, 190,220, UIFONT2 , BLACK)
+    drawText(str(finalScore), windowSurface, 300,220, UIFONT2 , BLACK)
+    backRect = pygame.Rect(190, 265, 150, 40)
+    
+    if backRect.collidepoint(jointpos):
+        drawText("Main Menu", windowSurface, 187, 262, UIFONT2, BLACK)
+        global START_GAME
+        if bang() == True:
+            START_GAME = 0
+    else :
+        drawText("Main Menu", windowSurface, 190, 265, UIFONT, BLACK)        
 
 max_num_hands = 1
 gesture = {
