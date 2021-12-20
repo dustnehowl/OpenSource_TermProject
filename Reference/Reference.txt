@@ -1,13 +1,16 @@
-###Reference
-
-참고한 곳 :
-https://github.com/spmallick/learnopencv
-
-https://github.com/wolfstriker134/Aim-Trainer
+https://github.com/kairess/Rock-Paper-Scissors-Machine
+의 가위바위보 인식을 활용하여 총쏘는 손모양을 가위 주먹을 바위로 인식하도록 바꿈
+(single.py 의 코드를 활용)
 
 https://github.com/pzet123/aim-Trainer
+의 pygame 을 활용하여 게임 ui들을 만듦
+(aimTrainer.py 의 코드를 활용)
 
-이미지 사용 :
-[background](https://appadvice.com/app/eagle-hunter-sniper-shooter-pro/1130203018)
+https://maplestory.nexon.com/Media/Font
+의 ttf 서체를 다운로드 하여 사용
 
-[game_back](https://www.pinterest.co.kr/mxsxixbx/%ED%95%98%EB%8A%98-%EA%B7%B8%EB%A6%BC/)
+https://appadvice.com/app/eagle-hunter-sniper-shooter-pro/1130203018
+의 아이콘을 배경으로 사용
+
+https://www.pinterest.co.kr/mxsxixbx/%ED%95%98%EB%8A%98-%EA%B7%B8%EB%A6%BC/
+의 하늘 배경을 배경으로 사용
