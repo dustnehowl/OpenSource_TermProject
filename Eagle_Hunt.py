@@ -336,7 +336,7 @@ while cap.isOpened():
 
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)
 
-    cv2.imshow('Game', img)
+    # cv2.imshow('Game', img)
 
 
     pygame.display.update()
