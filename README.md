@@ -235,7 +235,6 @@ def game(): #211130 수정
 
 ### 5. 타겟
 ![image](https://github.com/ehdrud0122/KimDG/blob/master/target.gif)
-https://w.namu.la/s/ab257588eb1be4d02b9f340039dd3c9ce872e6fb03e307b84ebc84222bbeaac403c522ce4b746e28d17dbd457b2e3f2f238395d658640ff989b9c9235905024e6e8eb31235e786cee53901841b381054
 
 #### 코드
 ```
