@@ -52,14 +52,23 @@ Eagle Hunt 는 3가지의 난이도가 있습니다. 표적의 크기, 점수는
 1. 대기(빨간색 에임) __엄지와 검지, 중지를 편 상대로 나머지를 굽혀 총모양을 만듭니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775522-e32a39fa-5947-4557-abcd-716ae9865fc3.png)
+<<<<<<< HEAD
 
+=======
+![image](https://github.com/ehdrud0122/KimDG/blob/master/%EB%8C%80%EA%B8%B0.png)
+>>>>>>> 372d63d82876deadca48e9ec36983406845ec632
 2. 발사(파란색 에임) __대기 상태에서 중지와 검지를 함께 굽혀 총을 발사하는 모양을 만듭니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775551-d3e14da1-51dd-4f2c-9210-8fecdc28889d.png)
+<<<<<<< HEAD
 
+=======
+![image](https://github.com/ehdrud0122/KimDG/blob/master/%EB%B0%9C%EC%82%AC.png)
+>>>>>>> 372d63d82876deadca48e9ec36983406845ec632
 3. 안전모드(초록색 에임) __대기와 발사 손모양이 아닌 모든 손모양 입니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775594-ab33b9a4-0be1-40fb-8546-68029233d717.png)
+![image](https://github.com/ehdrud0122/KimDG/blob/master/%EC%95%88%EC%A0%84%EB%AA%A8%EB%93%9C.png)
 
 
 ### 게임 시작
