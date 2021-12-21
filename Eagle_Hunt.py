@@ -89,7 +89,7 @@ def drawTarget(fN):
 
 def makeTarget(difficulty):
     global TARGET_SIZE
-    if difficulty == 'Easy':
+    if difficulty == ' Easy':
         TARGET_SIZE = 90
     elif difficulty == 'Normal':
         TARGET_SIZE = 70
@@ -178,7 +178,9 @@ def game(): #211130 수정
     bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
     bg_trans.set_alpha(100)
     windowSurface.blit(bg_trans, [0,0])
-
+    pygame.mixer.music.load('images/FloralLife.mp3')
+    pygame.mixer.music.play(-1,0.0)
+    
     global START_GAME,total_target,score,frameNum
     if START_GAME == 4:
         ScoreBoard()
@@ -196,6 +198,7 @@ def game(): #211130 수정
         backRect = pygame.Rect(465, 465, BACK_SIZE, BACK_SIZE)
         drawText("SCORE : ", windowSurface, 10,10, UIFONT , BLACK)
         drawText(str(score), windowSurface, 120,10, UIFONT , BLACK)
+        
 
 
         if bang() == True:
@@ -208,6 +211,8 @@ def game(): #211130 수정
                 START_GAME = 4
             for target in targets:
                 if target.collidepoint(jointpos):
+                    pygame.mixer.music.load('images/bang.mp3')
+                    pygame.mixer.music.play(1,0.0)
                     targets.remove(target)
                     score = score + START_GAME
                     total_target = total_target - 1
@@ -279,6 +284,7 @@ while cap.isOpened():
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
     game()
+    
 
     if result.multi_hand_landmarks is not None:
         for res in result.multi_hand_landmarks:
