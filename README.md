@@ -17,21 +17,21 @@ cam이 있는 컴퓨터에서 작동합니다. 손의 위치에 따라 에임이
 
 ### pip install
 
-```
+```python
 pip install opencv
 or
 pip install opencv-python
 ```
 
-```
+```python
 pip install mediapipe
 ```
 
-```
+```python
 pip install numpy
 ```
 
-```
+```python
 pip install pygame
 ```
 
@@ -39,7 +39,7 @@ pip install pygame
 
 필요한 모듈들을 pip를 통해 모두 다운로드 받았다면 다음 코드를 실행하여 Eagle Hunt 를 실행합니다.
 
-```
+```python
 python single.py
 ```
 
