@@ -51,6 +51,7 @@ Eagle Hunt 는 3가지의 난이도가 있습니다. 표적의 크기, 점수는
 손동작은 3가지로 나뉩니다.
 1. 대기(빨간색 에임) __엄지와 검지, 중지를 편 상대로 나머지를 굽혀 총모양을 만듭니다.__
 ![image](https://user-images.githubusercontent.com/39877181/146775522-e32a39fa-5947-4557-abcd-716ae9865fc3.png)
+![image](https://github.com/ehdrud0122/KimDG/blob/master/%EB%8C%80%EA%B8%B0.png)
 2. 발사(파란색 에임) __대기 상태에서 중지와 검지를 함께 굽혀 총을 발사하는 모양을 만듭니다.__
 ![image](https://user-images.githubusercontent.com/39877181/146775551-d3e14da1-51dd-4f2c-9210-8fecdc28889d.png)
 3. 안전모드(초록색 에임) __대기와 발사 손모양이 아닌 모든 손모양 입니다.__
