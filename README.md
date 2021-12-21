@@ -79,7 +79,7 @@ Eagle Hunt 는 3가지의 난이도가 있습니다. 표적의 크기, 점수는
 ![image](https://user-images.githubusercontent.com/39877181/146876810-0bedaa35-5034-4644-b79b-8e60efc8d80b.png)
 
 #### 코드
-```
+```python
 px = joint[14][0] * (WINDOW_SIZE_WIDTH) + 0
 py = joint[14][1] * (WINDOW_SIZE_HEIGHT) + 0
 jointpos = [px,py]
@@ -101,7 +101,7 @@ else:
 ![image](https://user-images.githubusercontent.com/39877181/146876881-3e4a63cf-b502-4091-8072-d21189a7cfb4.png)
 
 #### 코드
-```
+```python
 def Menu():
     windowSurface.fill(WHITE)
     global MODE
@@ -147,7 +147,7 @@ def Menu():
 ![image](https://user-images.githubusercontent.com/39877181/146876944-aab2b21c-3e3e-4fc1-adbc-3c22f042cc1a.png)
 
 #### 코드
-```
+```python
 def SetDiffi():
     difficultyRects = []
     difficultyRects.append(pygame.Rect(195, 95, 100, 40)) # difficultyRects.append(pygame.Rect(5, 450, random.randrange(100,200), 100))
@@ -178,7 +178,7 @@ def SetDiffi():
 ![image](https://user-images.githubusercontent.com/39877181/146877026-7bf6dcf6-7d95-474b-86c4-2f1a78724ee4.png)
 
 #### 코드
-```
+```python
 def game(): #211130 수정
     
     bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
@@ -237,7 +237,7 @@ def game(): #211130 수정
 ![image](https://github.com/ehdrud0122/KimDG/blob/master/target.gif)
 
 #### 코드
-```
+```python
 def drawTarget(fN):
 
     if fN < 4:
@@ -274,7 +274,7 @@ def makeTarget(difficulty):
 
 ### 6. bang (총을 쏘는 모션)
 #### 코드
-```
+```python
 def bang():
     global buffer
     if (buffer == 9 or buffer == 1 or buffer == 3) and (idx == 6 or idx == 0):
@@ -283,7 +283,7 @@ def bang():
         buffer = idx
         return False
 ```
-```
+```python
 gesture = {
     0:'fist', 1:'one', 2:'two', 3:'three', 4:'four', 5:'five',
     6:'six', 7:'rock', 8:'spiderman', 9:'yeah', 10:'ok',
@@ -302,7 +302,7 @@ rps_gesture = {6:'rock', 5:'paper', 9:'scissors', 1:'scissors', 0: 'rock', 3:'sc
 ![image](https://user-images.githubusercontent.com/39877181/146877245-694fe203-5adf-4a2b-ba47-5591dffb874c.png)
 
 #### 코드
-```
+```python
 def ScoreBoard () :
     bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
     bg_trans.set_alpha(100)
@@ -336,7 +336,7 @@ https://user-images.githubusercontent.com/39877181/146882727-0e9b86b2-5b9c-467c-
 실제 Eagle_Hunt 작동시 cam 은 출력되지 않습니다. 
 
 ### cam 출력을 원할시 코드 수정 
-```
+```python
 # cv2.imshow('Game', img)
 ```
 339줄의 주석을 해제 하면 됩니다.
