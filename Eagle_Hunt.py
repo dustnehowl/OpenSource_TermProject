@@ -178,7 +178,7 @@ def game(): #211130 수정
     bg_trans = pygame.transform.scale(bg_game, (WINDOW_SIZE_WIDTH,WINDOW_SIZE_HEIGHT))
     bg_trans.set_alpha(100)
     windowSurface.blit(bg_trans, [0,0])
-    pygame.mixer.music.load('images/FloralLife.mp3')
+    pygame.mixer.music.load('music/FloralLife.mp3')
     pygame.mixer.music.play(-1,0.0)
     
     global START_GAME,total_target,score,frameNum
@@ -211,7 +211,7 @@ def game(): #211130 수정
                 START_GAME = 4
             for target in targets:
                 if target.collidepoint(jointpos):
-                    pygame.mixer.music.load('images/bang.mp3')
+                    pygame.mixer.music.load('music/bang.mp3')
                     pygame.mixer.music.play(1,0.0)
                     targets.remove(target)
                     score = score + START_GAME
