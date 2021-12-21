@@ -89,7 +89,7 @@ def drawTarget(fN):
 
 def makeTarget(difficulty):
     global TARGET_SIZE
-    if difficulty == 'Easy':
+    if difficulty == ' Easy':
         TARGET_SIZE = 90
     elif difficulty == 'Normal':
         TARGET_SIZE = 70
