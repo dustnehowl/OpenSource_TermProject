@@ -52,19 +52,13 @@ Eagle Hunt 는 3가지의 난이도가 있습니다. 표적의 크기, 점수는
 1. 대기(빨간색 에임) __엄지와 검지, 중지를 편 상대로 나머지를 굽혀 총모양을 만듭니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775522-e32a39fa-5947-4557-abcd-716ae9865fc3.png)
-<<<<<<< HEAD
-
-=======
 ![image](https://github.com/ehdrud0122/KimDG/blob/master/%EB%8C%80%EA%B8%B0.png)
->>>>>>> 372d63d82876deadca48e9ec36983406845ec632
+
 2. 발사(파란색 에임) __대기 상태에서 중지와 검지를 함께 굽혀 총을 발사하는 모양을 만듭니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775551-d3e14da1-51dd-4f2c-9210-8fecdc28889d.png)
-<<<<<<< HEAD
-
-=======
 ![image](https://github.com/ehdrud0122/KimDG/blob/master/%EB%B0%9C%EC%82%AC.png)
->>>>>>> 372d63d82876deadca48e9ec36983406845ec632
+
 3. 안전모드(초록색 에임) __대기와 발사 손모양이 아닌 모든 손모양 입니다.__
 
 ![image](https://user-images.githubusercontent.com/39877181/146775594-ab33b9a4-0be1-40fb-8546-68029233d717.png)
@@ -80,9 +74,9 @@ Eagle Hunt 는 3가지의 난이도가 있습니다. 표적의 크기, 점수는
 
 ## 개발과정 및 기능설명
 
-### 약지 손가락 두번째 마디를 에임으로 설정 (11월 26일 추가)
+### 1. 약지 손가락 두번째 마디를 에임으로 설정 (11월 26일 추가)
 
-사진
+![image](https://user-images.githubusercontent.com/39877181/146876810-0bedaa35-5034-4644-b79b-8e60efc8d80b.png)
 
 #### 코드
 ```
@@ -102,9 +96,9 @@ else:
 * 손모양에 따라 다른 색깔을 맵핑
 * 에임의 모양을 게임시작 후에는 저격 모양으로, 메뉴화면에서는 포인터 모양으로 설정.
 
-### 메뉴 화면
+### 2. 메뉴 화면
 
-사진
+![image](https://user-images.githubusercontent.com/39877181/146876881-3e4a63cf-b502-4091-8072-d21189a7cfb4.png)
 
 #### 코드
 ```
@@ -148,9 +142,9 @@ def Menu():
 * UI에 포인터 올라가면 UI글씨가 확대되는 효과 추가 - 12월 20일 추가
 * Start! 를 bang할시 난이도 조절, Creator을 bang할시 이름출력, Exit을 bang할시 나가기 추가 - 12월 20일 추가
 
-### 난이도 선택
+### 3. 난이도 선택
 
-사진
+![image](https://user-images.githubusercontent.com/39877181/146876944-aab2b21c-3e3e-4fc1-adbc-3c22f042cc1a.png)
 
 #### 코드
 ```
@@ -178,9 +172,10 @@ def SetDiffi():
 * 에임이 올라와있는 난이도글씨에 확대 효과 추가 -12월 20일 추가
 * 난이도 선택 화면에 back버튼 추가 - 12월 20일 추가
 
-### 게임 기능 구현
+### 4. 게임 기능 구현
 
-사진
+![image](https://user-images.githubusercontent.com/39877181/146876996-f98f6fdc-c9a3-4112-b968-8590dccc66ea.png)
+![image](https://user-images.githubusercontent.com/39877181/146877026-7bf6dcf6-7d95-474b-86c4-2f1a78724ee4.png)
 
 #### 코드
 ```
@@ -238,8 +233,9 @@ def game(): #211130 수정
 * 뒤로가기 버튼에 총을 쏘는 모션을 하면 점수화면 - 12월 20일 추가
 * 타겟을 쏘면 타겟 사라지기 - 11월 27일 추가
 
-### 타겟
-사진
+### 5. 타겟
+
+https://w.namu.la/s/ab257588eb1be4d02b9f340039dd3c9ce872e6fb03e307b84ebc84222bbeaac403c522ce4b746e28d17dbd457b2e3f2f238395d658640ff989b9c9235905024e6e8eb31235e786cee53901841b381054
 
 #### 코드
 ```
@@ -277,7 +273,7 @@ def makeTarget(difficulty):
 * 프레임 단위로 이미지를 넣어 움직이는 것처럼 구현 - 11월 30일 추가
 * 난이도 별로 다른 사이즈의 타깃 사이즈 - 11월 27일 추가
 
-### bang (총을 쏘는 모션)
+### 6. bang (총을 쏘는 모션)
 #### 코드
 ```
 def bang():
@@ -302,8 +298,10 @@ rps_gesture = {6:'rock', 5:'paper', 9:'scissors', 1:'scissors', 0: 'rock', 3:'sc
 * 버퍼에 이전 손모양을 저장하여 (가위 모양 -> 주먹모양)으로 변경시 True 리턴 - 11월 26일 추가
 * 대기하는 손 모양과 쏘는 손모양의 제스쳐들을 모두 유효 제스쳐로 추가 - 11월 26일 추가
 
-### 스코어보드
-사진
+### 7. 스코어보드
+
+![image](https://user-images.githubusercontent.com/39877181/146877245-694fe203-5adf-4a2b-ba47-5591dffb874c.png)
+
 #### 코드
 ```
 def ScoreBoard () :
